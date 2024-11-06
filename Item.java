@@ -1,3 +1,9 @@
+ /**
+  * This is the Item file
+  * Here we get information, getters and setters
+  * And also a few getters that gives all the details
+  */
+
 import java.util.ArrayList;
 
 public class Item {
