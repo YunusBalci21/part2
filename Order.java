@@ -1,3 +1,9 @@
+ /**
+  * This is the Order file
+  * Here we get information, getters and setters
+  * And also a few getters that gives all the details
+  */
+
 import java.util.ArrayList;
 
 public class Order {
@@ -68,7 +74,7 @@ public class Order {
     }
 
     // Methods for support
-    protected void updateOrder(String status) {
+    protected void updateStatus(String status) {
         this.status = status;
     }
 

@@ -1,5 +1,9 @@
-
-// import java.util.ArrayList;
+/**
+ * This is the main of our software engineering project
+ * It's supposed to simulate the usage of the program by:
+ * Creating items, adding them to the inventory
+ * Creating user accounts and using them to processing orders and items.
+ */
 
 public class Main {
     public static void main(String[] args) {
@@ -13,22 +17,22 @@ public class Main {
         Salesman salesman = new Salesman(1, "JohnDoe", "1234", "jane.doe@gmail.com", 42424242);
         WarehouseWorker worker = new WarehouseWorker(2, "JaneDoe", "1234", "jane.doe@gmail.com", 42424242);
         Support support = new Support(3, "SupportUser", "1234", "support@gmail.com", 42424242);
-
+        
         // Salesman actions
         salesman.login();
-        salesman.createOrder(order);
+        salesman.makeOrder(Order);
         salesman.viewInventory(inventory);
         salesman.logout();
 
         // Warehouse Worker actions
         worker.login();
-        worker.processOrder(order);
+        worker.processOrder(orderID);
         worker.logout();
 
         // Support actions
         support.login();
-        support.modifyOrder(order, "Canceled");
-        support.updateStock(inventory, 1, 4);
+        support.modifyOrder(orderID, "Canceled");
+        support.updateItem(Item); // Update stock
         support.logout();
         
     }
