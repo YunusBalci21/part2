@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Salesman extends User {
     public Salesman(int userId, String username, String password, String mail, int phoneNumber) {
         super(userId, username, password, mail, phoneNumber);
@@ -30,15 +32,25 @@ public class Salesman extends User {
     }
 
 
-    public void makeOrder() {
-        System.out.println("Order created: ");
+    public void makeOrder(int orderID, String orderDate, int salesmanID, long price,
+                 ArrayList<Item> itemList) {
+
+		//cheking acsses
+		if (!acsses) {
+			System.out.println("Warehouse Worker is not logged in.");
+			return;
+		}
+
+		Order newOrder = new Order(orderID, orderDate, salesmanID, price, itemList);
+    
+		//todo add newOrder to database
     }
 
 
      @Override
     public void updateDetails(String username, String password, String mail, int phoneNumber) {
 		//cheking acsses
-		if (acsses = false) {
+		if (!acsses) {
 			System.out.println("Warehouse Worker is not logged in.");
 			return;
 		}

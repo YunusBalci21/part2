@@ -1,4 +1,6 @@
-public class ShopInfo {
+import java.util.ArrayList;
+
+public class ShopInfo  {
     private String shopName;
     private String address;
     private String managerName;
@@ -19,4 +21,12 @@ public class ShopInfo {
         return "Shop: " + shopName + ", Address: " + address +
             ", Manager: " + managerName + ", Contact: " + managerPhone;
     }
+
+	 public void setAllFields(String shopName, String address, String managerName, int managerPhone, String managerMail){
+        this.shopName = shopName;
+        this.address = address;
+        this.managerName = managerName;
+        this.managerPhone = managerPhone;
+    }
+
 }

@@ -31,7 +31,7 @@ public class WarehouseWorker extends User {
     public void updateOrder(Order order, String status) {
 
 		//cheking acsses
-		if (acsses = false) {
+		if (!acsses) {
 			System.out.println("Warehouse Worker is not logged in.");
 			return;
 		}
@@ -43,7 +43,7 @@ public class WarehouseWorker extends User {
     @Override
     public void updateDetails(String username, String password, String mail, int phoneNumber) {
 		//cheking acsses
-		if (acsses = false) {
+		if (!acsses) {
 			System.out.println("Warehouse Worker is not logged in.");
 			return;
 		}
@@ -57,7 +57,7 @@ public class WarehouseWorker extends User {
     @Override
     public void readItems() {
 		//cheking acsses
-		if (acsses = false) {
+		if (!acsses) {
 			System.out.println("Warehouse Worker is not logged in.");
 			return;
 		}
@@ -68,7 +68,7 @@ public class WarehouseWorker extends User {
     @Override
     public void readOrders() {
 		//cheking acsses
-		if (acsses = false) {
+		if (!acsses) {
 			System.out.println("Warehouse Worker is not logged in.");
 			return;
 		}
