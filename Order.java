@@ -1,4 +1,4 @@
-public interface Order {
+public class Order {
     int getOrderID();
     String getOrderDate();
     double getPrice();
