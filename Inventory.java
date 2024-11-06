@@ -2,7 +2,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Inventory {
-    private Map<Integer, Item> items = new HashMap<>();
+    final Map<Integer, Item> items = new HashMap<>();
     private int restockThreshold = 5;
 
     public void addItem(Item item) {

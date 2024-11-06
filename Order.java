@@ -68,7 +68,7 @@ public class Order {
     }
 
     // Methods for support
-    protected void updateOrder(String status) {
+    protected void updateStatus(String status) {
         this.status = status;
     }
 
