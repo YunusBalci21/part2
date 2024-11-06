@@ -1,5 +1,5 @@
 
-import java.util.ArrayList;
+// import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
@@ -8,6 +8,7 @@ public class Main {
         Item item2 = new Item(2, "Pot", 6000, 60.00, "This is some good pot", "Supplier B");
         inventory.addItem(item1);
         inventory.addItem(item2);
+        inventory.updateReStock(5);
 
         Salesman salesman = new Salesman(1, "JohnDoe", "1234", "jane.doe@gmail.com", 42424242);
         WarehouseWorker worker = new WarehouseWorker(2, "JaneDoe", "1234", "jane.doe@gmail.com", 42424242);
@@ -29,5 +30,6 @@ public class Main {
         support.modifyOrder(order, "Canceled");
         support.updateStock(inventory, 1, 4);
         support.logout();
+        
     }
 }

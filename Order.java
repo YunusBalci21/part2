@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Order {
-    private int orderID;
+    final int orderID;
     private String orderDate;
     private int salesmanID;
     private double price;
@@ -9,6 +9,32 @@ public class Order {
     private ArrayList<Item> itemList;
     //private shop info arrow
 
+    // Getters
+    public int getOrderID() {
+        return orderID;
+    }
+
+    public String getOrderDate() {
+        return orderDate;
+    }
+
+    public int getSalesmanID() {
+        return salesmanID;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public ArrayList<Item> getItemList() {
+        return itemList;
+    }
+
+    // Detailed getters
     // Constructor to initialize all fields
     public Order(int orderID, String orderDate, int salesmanID, long price,
                  ArrayList<Item> itemList) {
@@ -44,5 +70,14 @@ public class Order {
     // Methods for support
     protected void updateOrder(String status) {
         this.status = status;
+    }
+
+    // Big ugly setter to set all fields at once
+    public void setAllFields(String orderDate, int salesmanID, double price, String status, ArrayList<Item> itemList) {
+        this.orderDate = orderDate;
+        this.salesmanID = salesmanID;
+        this.price = price;
+        this.status = status;
+        this.itemList = itemList != null ? itemList : new ArrayList<>();
     }
 }

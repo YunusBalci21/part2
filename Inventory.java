@@ -6,7 +6,7 @@ public class Inventory {
     private int restockThreshold = 5;
 
     public void addItem(Item item) {
-        items.put(item.getItemId(), item);
+        items.put(item.getItemID(), item);
     }
 
     public void updateStock(int itemId, int newStock) {
@@ -16,11 +16,15 @@ public class Inventory {
             checkRestock(item);
         }
     }
-
+    
     public void displayInventory() {
         for (Item item : items.values()) {
-            item.readItemDetails();
+            item.getItemDetails();
         }
+    }
+    
+    public void updateReStock(int restockThreshold) {
+        this.restockThreshold = restockThreshold;
     }
 
     private void checkRestock(Item item) {
@@ -34,4 +38,5 @@ public class Inventory {
         System.out.println("Restocking item: " + item.getName() + " from Supplier A or B.");
         item.updateStock(10);  // Simulate restocking with a fixed amount
     }
+
 }
