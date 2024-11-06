@@ -1,26 +1,40 @@
+import java.util.ArrayList;
+
 public class Item {
-    private int itemId;
-    private String name;
+    private int itemID;
     private int stock;
+    private String name;
     private double price;
+    private String description;
+    private ArrayList<Order> itemOrderHistory;
+    private String supplier;
+    private boolean expitedItem;
 
-    public Item(int itemId, String name, int stock, double price) {
-        this.itemId = itemId;
-        this.name = name;
+    public Item(int itemID, String name, int stock, double price, String description, ArrayList<Order> itemOrderHistory, String supplier) {
+        this.itemID = itemID; // Should be made automatic with incrementing numbers in the database
         this.stock = stock;
+        this.name = name;
         this.price = price;
+        this.description = description;
+        this.itemOrderHistory = itemOrderHistory != null ? itemOrderHistory
+            : new ArrayList<>(); // Initialize to empty if null
+        this.supplier = supplier;
+        this.expitedItem = false;
     }
 
-    public int getItemId() { return itemId; }
-    public String getName() { return name; }
-    public int getStock() { return stock; }
-
-    public void updateStock(int quantity) {
-        this.stock += quantity;
-        System.out.println("Stock updated to " + stock);
+    public String getItemDetails() {
+        String text = "This is your item details from itemID: " + itemID + 
+            "\nStock: " + stock +
+            "\nName: " + name +
+            "\nPrice: " + price +
+            "\nDescription: " + description +
+            "\nSupplier: " + supplier +
+            "\nIs item expired from production: " + expitedItem;
+        return text;
     }
 
-    public void readItemDetails() {
-        System.out.println("Item ID: " + itemId + ", Name: " + name + ", Stock: " + stock + ", Price: $" + price);
+    public String getOrderHistory() {
+        return "\nItem-Order-History:\nOrder\nOrder\nOrder\nOrder";
     }
+
 }
