@@ -1,10 +1,13 @@
 public class Salesman extends User {
-    public Salesman(int userId, String username) {
-        super(userId, username);
+    public Salesman(int userId, String username, String password, String mail, int phoneNumber) {
+        super(userId, username, password, mail, phoneNumber);
     }
 
+    Salesman salesman = new Salesman(userId, null, null, null, userId);
+
     @Override
-    public void login() {
+    public void login(Salesman salesman) {
+        if (salesman.username && salesman.password != )
         System.out.println("Salesman logged in.");
     }
 
@@ -13,11 +16,25 @@ public class Salesman extends User {
         System.out.println("Salesman logged out.");
     }
 
-    public void createOrder(SaleOrder order) {
-        System.out.println("Order created: " + order);
+    public void makeOrder() {
+        System.out.println("Order created: ");
     }
 
-    public void viewInventory(Inventory inventory) {
-        inventory.displayInventory();
+    @Override
+    public void updateDetails() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'updateDetails'");
+    }
+
+    @Override
+    public void readItems() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'readItems'");
+    }
+
+    @Override
+    public void readOrders() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'readOrders'");
     }
 }
