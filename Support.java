@@ -94,7 +94,7 @@ public class Support extends User {
 		//cheking acsses
 		if (!acsses) {
 			System.out.println("Warehouse Worker is not logged in.");
-			return ;
+			return null;
 		}
         return new ShopInfo(shopName, address, managerName, managerPhone, managerMail);
     }
@@ -114,11 +114,11 @@ public class Support extends User {
 	@Override
     public void login(String password) {
 		if (password == this.password) {
-			System.out.println("Salesman logged in.");
+			System.out.println("Support logged in.");
 			this.acsses = true;
 		}
 		else{
-			System.out.println("Salesman has not logged in.");
+			System.out.println("Support has not logged in.");
 		}
        
     }
@@ -127,11 +127,11 @@ public class Support extends User {
     @Override
     public void logout(String password) {
 		if (password == this.password) {
-			System.out.println("Salesman logged out.");
+			System.out.println("Support logged out.");
 			this.acsses = false;
 		}
 		else{
-			System.out.println("Salesman has not logged out.");
+			System.out.println("Support has not logged out.");
 		}
     }
 
