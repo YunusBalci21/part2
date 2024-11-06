@@ -10,14 +10,13 @@ public class Item {
     private String supplier;
     private boolean expitedItem;
 
-    public Item(int itemID, String name, int stock, double price, String description, ArrayList<Order> itemOrderHistory, String supplier) {
+    public Item(int itemID, String name, int stock, double price, String description, String supplier) {
         this.itemID = itemID; // Should be made automatic with incrementing numbers in the database
         this.stock = stock;
         this.name = name;
         this.price = price;
         this.description = description;
-        this.itemOrderHistory = itemOrderHistory != null ? itemOrderHistory
-            : new ArrayList<>(); // Initialize to empty if null
+        this.itemOrderHistory = new ArrayList<>(); // Initialize to empty
         this.supplier = supplier;
         this.expitedItem = false;
     }

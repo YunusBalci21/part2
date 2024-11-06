@@ -4,14 +4,14 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
         Inventory inventory = new Inventory();
-        Item item1 = new Item(1, "Pan", 4000, 42.00, "This is a good pan", new ArrayList<Order>(), "Supplier A");
-        Item item2 = new Item(2, "Pot", 6000, 60.00, "This is some good pot", new ArrayList<Order>(), "Supplier B");
+        Item item1 = new Item(1, "Pan", 4000, 42.00, "This is a good pan", "Supplier A");
+        Item item2 = new Item(2, "Pot", 6000, 60.00, "This is some good pot", "Supplier B");
         inventory.addItem(item1);
         inventory.addItem(item2);
 
-        Salesman salesman = new Salesman(1, "JohnDoe");
-        WarehouseWorker worker = new WarehouseWorker(2, "JaneDoe");
-        Support support = new Support(3, "SupportUser");
+        Salesman salesman = new Salesman(1, "JohnDoe", "1234", "jane.doe@gmail.com", 42424242);
+        WarehouseWorker worker = new WarehouseWorker(2, "JaneDoe", "1234", "jane.doe@gmail.com", 42424242);
+        Support support = new Support(3, "SupportUser", "1234", "support@gmail.com", 42424242);
 
         // Salesman actions
         salesman.login();
