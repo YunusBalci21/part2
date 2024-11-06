@@ -5,34 +5,74 @@ public class WarehouseWorker extends User {
     }
 
     @Override
-    public void login() {
-        System.out.println("Warehouse Worker logged in.");
+    public void login(String password) {
+		if (password == this.password) {
+			System.out.println("Warehouse Worker logged in.");
+			this.acsses = true;
+		}
+		else{
+			System.out.println("Warehouse Worker is not logged in.");
+		}
+       
     }
 
     @Override
-    public void logout() {
-        System.out.println("Warehouse Worker logged out.");
+    public void logout(String password) {
+		if (password == this.password) {
+			System.out.println("Warehouse Worker logged out.");
+			this.acsses = false;
+		}
+		else{
+			System.out.println("Warehouse Worker has not logged out.");
+		}
+
     }
 
-    public void updateOrder() {
+    public void updateOrder(Order order, String status) {
+
+		//cheking acsses
+		if (acsses = false) {
+			System.out.println("Warehouse Worker is not logged in.");
+			return;
+		}
+
+		order.updateStatus("" + status);
         System.out.println("Order Updated");
     }
 
     @Override
-    public void updateDetails() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'updateDetails'");
+    public void updateDetails(String username, String password, String mail, int phoneNumber) {
+		//cheking acsses
+		if (acsses = false) {
+			System.out.println("Warehouse Worker is not logged in.");
+			return;
+		}
+
+		this.username = username;
+		this.password = password;
+		this.mail = mail;
+		this.phoneNumber = phoneNumber;
     }
 
     @Override
     public void readItems() {
-        // TODO Auto-generated method stub
+		//cheking acsses
+		if (acsses = false) {
+			System.out.println("Warehouse Worker is not logged in.");
+			return;
+		}
+		//-----TODO database-----
         throw new UnsupportedOperationException("Unimplemented method 'readItems'");
     }
 
     @Override
     public void readOrders() {
-        // TODO Auto-generated method stub
+		//cheking acsses
+		if (acsses = false) {
+			System.out.println("Warehouse Worker is not logged in.");
+			return;
+		}
+		//-----TODO database-----
         throw new UnsupportedOperationException("Unimplemented method 'readOrders'");
     }
 }

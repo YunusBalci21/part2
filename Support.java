@@ -15,6 +15,7 @@ public class Support extends User {
 
     @Override
     public void updateDetails() {
+		
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'updateDetails'");
     }
