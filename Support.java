@@ -107,7 +107,7 @@ public class Support extends User {
 			return;
 		}
         
-		shopInfo.setAllFields(shopName, address, managerName, managerPhone, managerMail);
+		shopInfo.setShopInfo(shopName, address, managerName, managerPhone, managerMail);
     }
 
 
