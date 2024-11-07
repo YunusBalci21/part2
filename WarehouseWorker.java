@@ -29,7 +29,6 @@ public class WarehouseWorker extends User {
     }
 
     public void updateOrder(Order order, String status) {
-
 		//cheking acsses
 		if (!acsses) {
 			System.out.println("Warehouse Worker is not logged in.");
