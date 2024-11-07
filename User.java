@@ -1,9 +1,10 @@
 public abstract class User {
-    protected int userId;
+    final int userId;
     protected String username;
     protected String password;
     protected String mail;
     protected int phoneNumber;
+	protected boolean acsses;
 
     public User(int userId, String username, String password, String mail, int phoneNumber) {
         this.userId = userId;
@@ -13,11 +14,11 @@ public abstract class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public abstract void login();
+    public abstract void login(String password);
 
-    public abstract void logout();
+    public abstract void logout(String password);
 
-    public abstract void updateDetails();
+	public abstract void updateDetails(String username, String password, String mail, int phoneNumber);
 
     public abstract void readItems();
 

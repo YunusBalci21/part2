@@ -1,4 +1,6 @@
-public class ShopInfo {
+import java.util.ArrayList;
+
+public class ShopInfo  {
     private String shopName;
     private String address;
     private String managerName;
@@ -27,6 +29,7 @@ public class ShopInfo {
         this.managerName = managerName;
         this.managerPhone = managerPhone;
         this.managerMail = managerMail;
+
     }
 
 }

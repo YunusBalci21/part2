@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Salesman extends User {
     public Salesman(int userId, String username, String password, String mail, int phoneNumber) {
         super(userId, username, password, mail, phoneNumber);
@@ -5,25 +7,58 @@ public class Salesman extends User {
 
     Salesman salesman = new Salesman(userId, null, null, null, userId);
 
-    @Override
-    public void login(Salesman salesman) {
-        if (salesman.username && salesman.password != )
-        System.out.println("Salesman logged in.");
+	@Override
+    public void login(String password) {
+		if (password == this.password) {
+			System.out.println("Salesman logged in.");
+			this.acsses = true;
+		}
+		else{
+			System.out.println("Salesman has not logged in.");
+		}
+       
     }
 
-    @Override
-    public void logout() {
-        System.out.println("Salesman logged out.");
-    }
-
-    public void makeOrder() {
-        System.out.println("Order created: ");
-    }
 
     @Override
-    public void updateDetails() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'updateDetails'");
+    public void logout(String password) {
+		if (password == this.password) {
+			System.out.println("Salesman logged out.");
+			this.acsses = false;
+		}
+		else{
+			System.out.println("Salesman has not logged out.");
+		}
+    }
+
+
+    public void makeOrder(int orderID, String orderDate, int salesmanID, long price,
+                 ArrayList<Item> itemList) {
+
+		//cheking acsses
+		if (!acsses) {
+			System.out.println("Warehouse Worker is not logged in.");
+			return;
+		}
+
+		Order newOrder = new Order(orderID, orderDate, salesmanID, price, itemList);
+    
+		//todo add newOrder to database
+    }
+
+
+     @Override
+    public void updateDetails(String username, String password, String mail, int phoneNumber) {
+		//cheking acsses
+		if (!acsses) {
+			System.out.println("Warehouse Worker is not logged in.");
+			return;
+		}
+
+		this.username = username;
+		this.password = password;
+		this.mail = mail;
+		this.phoneNumber = phoneNumber;
     }
 
     @Override
@@ -37,4 +72,5 @@ public class Salesman extends User {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'readOrders'");
     }
+
 }
