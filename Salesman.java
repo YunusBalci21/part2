@@ -8,62 +8,56 @@ public class Salesman extends User {
 
     Salesman salesman = new Salesman(userId, null, null, null, userId);
 
-	@Override
+    @Override
     public void login(String password) {
-		if (password == this.password) {
-			System.out.println("Salesman logged in.");
-			this.acsses = true;
-		}
-		else{
-			System.out.println("Salesman has not logged in.");
-		}
-       
-    }
+        if (password == this.password) {
+            System.out.println("Salesman logged in.");
+            this.access = true;
+        } else {
+            System.out.println("Salesman has not logged in.");
+        }
 
+    }
 
     @Override
     public void logout(String password) {
-		if (password == this.password) {
-			System.out.println("Salesman logged out.");
-			this.acsses = false;
-		}
-		else{
-			System.out.println("Salesman has not logged out.");
-		}
+        if (password == this.password) {
+            System.out.println("Salesman logged out.");
+            this.access = false;
+        } else {
+            System.out.println("Salesman has not logged out.");
+        }
     }
-
 
     public void makeOrder(int orderID, String orderDate, int salesmanID, long price,
-                 ArrayList<Item> itemList, HashMap<Integer, Order> listOfOrders) {
+            ArrayList<Item> itemList, HashMap<Integer, Order> listOfOrders) {
 
-		//cheking acsses
-		if (!acsses) {
-			System.out.println("Warehouse Worker is not logged in.");
-			return;
-		}
+        // cheking access
+        if (!access) {
+            System.out.println("Warehouse Worker is not logged in.");
+            return;
+        }
 
-		Order newOrder = new Order(orderID, orderDate, salesmanID, price, itemList);
+        Order newOrder = new Order(orderID, orderDate, salesmanID, price, itemList);
 
-		 // simulates putting order in order database
-		listOfOrders.put(orderID, newOrder);
-		System.out.println("Order created successfully with ID: " + orderID);
-		
-    
+        // simulates putting order in order database
+        listOfOrders.put(orderID, newOrder);
+        System.out.println("Order created successfully with ID: " + orderID);
+
     }
 
-
-     @Override
+    @Override
     public void updateDetails(String username, String password, String mail, int phoneNumber) {
-		//cheking acsses
-		if (!acsses) {
-			System.out.println("Warehouse Worker is not logged in.");
-			return;
-		}
+        // cheking access
+        if (!access) {
+            System.out.println("Warehouse Worker is not logged in.");
+            return;
+        }
 
-		this.username = username;
-		this.password = password;
-		this.mail = mail;
-		this.phoneNumber = phoneNumber;
+        this.username = username;
+        this.password = password;
+        this.mail = mail;
+        this.phoneNumber = phoneNumber;
     }
 
     @Override
@@ -74,23 +68,23 @@ public class Salesman extends User {
 
     @Override
     public void readOrders(HashMap<Integer, Order> listOfOrders) {
-		//cheking acsses
-		if (!acsses) {
-			System.out.println("Warehouse Worker is not logged in.");
-			return;
-		}
-		
-      	// Check if the order list is empty
-		if (listOfOrders.isEmpty()) {
-			System.out.println("No orders available.");
-			return;
-		}
-		
-		// Print out each order in the list
-		System.out.println("List of all orders:");
-		for (Order order : listOfOrders.values()) {
-			System.out.println(order);
-		}
+        // cheking access
+        if (!access) {
+            System.out.println("Warehouse Worker is not logged in.");
+            return;
+        }
+
+        // Check if the order list is empty
+        if (listOfOrders.isEmpty()) {
+            System.out.println("No orders available.");
+            return;
+        }
+
+        // Print out each order in the list
+        System.out.println("List of all orders:");
+        for (Order order : listOfOrders.values()) {
+            System.out.println(order);
+        }
     }
 
 }

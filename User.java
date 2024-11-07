@@ -6,7 +6,12 @@ public abstract class User {
     protected String password;
     protected String mail;
     protected int phoneNumber;
-	protected boolean acsses;
+    protected boolean access;
+
+    public static HashMap<Integer, User> userDatabase = new HashMap<>();
+    public static HashMap<Integer, User> itemDatabase = new HashMap<>();
+    public static HashMap<Integer, User> orderDatabase = new HashMap<>();
+    // Where should the Databases lie?
 
     public User(int userId, String username, String password, String mail, int phoneNumber) {
         this.userId = userId;
@@ -16,12 +21,11 @@ public abstract class User {
         this.phoneNumber = phoneNumber;
     }
 
-
     public abstract void login(String password);
 
     public abstract void logout(String password);
 
-	public abstract void updateDetails(String username, String password, String mail, int phoneNumber);
+    public abstract void updateDetails(String username, String password, String mail, int phoneNumber);
 
     public abstract void readItems();
 
