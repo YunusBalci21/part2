@@ -120,7 +120,6 @@ public class Support extends User {
 		else{
 			System.out.println("Support has not logged in.");
 		}
-       
     }
 
 

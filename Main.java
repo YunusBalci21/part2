@@ -21,12 +21,12 @@ public class Main {
         // Salesman actions
         salesman.login("1234");
         salesman.makeOrder(Order);
-        salesman.viewInventory(inventory);
+        salesman.readItems(inventory);
         salesman.logout();
 
         // Warehouse Worker actions
         worker.login();
-        worker.processOrder(orderID);
+        worker.updateOrder(orderID);
         worker.logout();
 
         // Support actions
