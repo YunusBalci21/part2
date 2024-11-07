@@ -43,7 +43,9 @@ public class Salesman extends User {
 
 		Order newOrder = new Order(orderID, orderDate, salesmanID, price, itemList);
     
-		//todo add newOrder to database
+		// TODO add newOrder to database.
+        // Create hashmap in main and make that work as the database.
+        // Make order should also have input as to the hashmap.
     }
 
 
