@@ -17,9 +17,9 @@ public class Main {
         Salesman salesman = new Salesman(1, "JohnDoe", "1234", "jane.doe@gmail.com", 42424242);
         WarehouseWorker worker = new WarehouseWorker(2, "JaneDoe", "1234", "jane.doe@gmail.com", 42424242);
         Support support = new Support(3, "SupportUser", "1234", "support@gmail.com", 42424242);
-        
+
         // Salesman actions
-        salesman.login();
+        salesman.login("1234");
         salesman.makeOrder(Order);
         salesman.readItems(inventory);
         salesman.logout();
@@ -34,6 +34,6 @@ public class Main {
         support.modifyOrder(orderID, "Canceled");
         support.updateItem(Item); // Update stock
         support.logout();
-        
+
     }
 }

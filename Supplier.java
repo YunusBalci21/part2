@@ -45,6 +45,7 @@ public class Supplier {
 
     public void orderItemStock() {
         // Make the API call
+        // Done in Inventory
     }
 
 }
