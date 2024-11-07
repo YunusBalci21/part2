@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 public abstract class User {
     final int userId;
     protected String username;
@@ -14,6 +16,7 @@ public abstract class User {
         this.phoneNumber = phoneNumber;
     }
 
+
     public abstract void login(String password);
 
     public abstract void logout(String password);
@@ -22,6 +25,6 @@ public abstract class User {
 
     public abstract void readItems();
 
-    public abstract void readOrders();
+    public abstract void readOrders(HashMap<Integer, Order> listOfOrders);
 
 }

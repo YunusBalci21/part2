@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Salesman extends User {
     public Salesman(int userId, String username, String password, String mail, int phoneNumber) {
@@ -33,7 +34,7 @@ public class Salesman extends User {
 
 
     public void makeOrder(int orderID, String orderDate, int salesmanID, long price,
-                 ArrayList<Item> itemList) {
+                 ArrayList<Item> itemList, HashMap<Integer, Order> listOfOrders) {
 
 		//cheking acsses
 		if (!acsses) {
@@ -42,8 +43,12 @@ public class Salesman extends User {
 		}
 
 		Order newOrder = new Order(orderID, orderDate, salesmanID, price, itemList);
+
+		 // simulates putting order in order database
+		listOfOrders.put(orderID, newOrder);
+		System.out.println("Order created successfully with ID: " + orderID);
+		
     
-		//todo add newOrder to database
     }
 
 
@@ -68,9 +73,24 @@ public class Salesman extends User {
     }
 
     @Override
-    public void readOrders() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'readOrders'");
+    public void readOrders(HashMap<Integer, Order> listOfOrders) {
+		//cheking acsses
+		if (!acsses) {
+			System.out.println("Warehouse Worker is not logged in.");
+			return;
+		}
+		
+      	// Check if the order list is empty
+		if (listOfOrders.isEmpty()) {
+			System.out.println("No orders available.");
+			return;
+		}
+		
+		// Print out each order in the list
+		System.out.println("List of all orders:");
+		for (Order order : listOfOrders.values()) {
+			System.out.println(order);
+		}
     }
 
 }
