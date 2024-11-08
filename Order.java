@@ -4,7 +4,7 @@
   * And also a few getters that gives all the details
   */
 
-import java.util.ArrayList;
+import java.util.Map;
 
 public class Order {
     final int orderID;
@@ -12,7 +12,7 @@ public class Order {
     private int salesmanID;
     private double price;
     private String status;
-    private ArrayList<Item> itemList;
+    private Map<Item, Integer> itemList;
     //private shop info arrow
 
     // Getters
@@ -36,20 +36,20 @@ public class Order {
         return status;
     }
 
-    public ArrayList<Item> getItemList() {
+    public Map<Item, Integer> getItemList() {
         return itemList;
     }
 
     // Detailed getters
     // Constructor to initialize all fields
     public Order(int orderID, String orderDate, int salesmanID, long price,
-                 ArrayList<Item> itemList) {
+                 Map<Item, Integer> itemList) {
         this.orderID = orderID; // Should be made automatic with incrementing numbers in the database
         this.orderDate = orderDate;
         this.salesmanID = salesmanID;
         this.price = price;
         this.status = "Order created";
-        this.itemList = itemList != null ? itemList : new ArrayList<>(); // Initialize to empty if null
+        this.itemList = itemList;
     }
 
     // Order details
@@ -79,11 +79,11 @@ public class Order {
     }
 
     // Big ugly setter to set all fields at once
-    public void setAllFields(String orderDate, int salesmanID, double price, String status, ArrayList<Item> itemList) {
+    public void setAllFields(String orderDate, int salesmanID, double price, String status, Map<Item, Integer> itemList) {
         this.orderDate = orderDate;
         this.salesmanID = salesmanID;
         this.price = price;
         this.status = status;
-        this.itemList = itemList != null ? itemList : new ArrayList<>();
+        this.itemList = itemList;
     }
 }

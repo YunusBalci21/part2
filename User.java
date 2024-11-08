@@ -23,12 +23,22 @@ public abstract class User {
 
     public abstract void login(String password);
 
-    public abstract void logout(String password);
+    // public abstract void logout(String password);
+    // Jonas: man skal vel ikke bruge password for at logge ud?
+    public abstract void logout();
 
     public abstract void updateDetails(String username, String password, String mail, int phoneNumber);
 
-    public abstract void readItems();
+    public abstract void readItems(Database database);
 
     public abstract void readOrders(HashMap<Integer, Order> listOfOrders);
+
+    public int getUserID() {
+        return userId;
+    }
+
+    public void readInventory(Database database) {
+        database.displayInventory();
+    }
 
 }

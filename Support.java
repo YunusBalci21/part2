@@ -1,15 +1,26 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class Support extends User {
 	public Support(int userId, String username, String password, String mail, int phoneNumber) {
 		super(userId, username, password, mail, phoneNumber);
 	}
 
-	// private static HashMap<Integer, User> userDatabase = new HashMap<>();
-	// private static HashMap<Integer, User> itemDatabase = new HashMap<>();
-	// private static HashMap<Integer, User> orderDatabase = new HashMap<>();
-	// Where should the Databases lie?
+	@Override
+    public void login(String password) {
+        if (password.equals(this.password)) {
+            System.out.println("Support logged in.");
+            this.access = true;
+        } else {
+            System.out.println("Support has not logged in.");
+        }
+    }
+
+    @Override
+    public void logout() {
+            System.out.println("Support logged out.");
+    }
 
 	// public enum Role {
 	// SUPPORT,
@@ -29,17 +40,11 @@ public class Support extends User {
 
 		User new_user = null;
 
-		switch (role) {
-			case "Support":
-				new_user = new Support(userId, username, password, mail, phoneNumber);
-				break;
-			case "WareHouseWorker":
-				new_user = new WarehouseWorker(userId, username, password, mail, phoneNumber);
-				break;
-			default:
-				new_user = new Salesman(userId, username, password, mail, phoneNumber);
-				break;
-		}
+		new_user = switch (role) {
+			case "Support" -> new Support(userId, username, password, mail, phoneNumber);
+			case "WareHouseWorker" -> new WarehouseWorker(userId, username, password, mail, phoneNumber);
+			default -> new Salesman(userId, username, password, mail, phoneNumber);
+		};
 
 		if (new_user != null) {
 			userDatabase.put(userId, new_user);
@@ -87,15 +92,18 @@ public class Support extends User {
 
 	}
 
-	public void updateOrder(Order order, String orderDate, int salesmanID, double price, String status,
-			ArrayList<Item> itemList) {
+	public void updateOrder(int orderID, Database database, String orderDate, int salesmanID, double price, String status,
+			Map<Item, Integer> itemList) {
 		// cheking access
 		if (!access) {
 			System.out.println("Warehouse Worker is not logged in.");
 			return;
 		}
 
+		Order order = database.getOrder(orderID);
 		order.setAllFields(orderDate, salesmanID, price, status, itemList);
+		database.removeOrder(orderID);
+		database.addOrder(order);
 	}
 
 	public void createItem(int itemID, String name, int stock, double price, String description, String supplier) {
@@ -110,7 +118,7 @@ public class Support extends User {
 		// todo add new_item
 	}
 
-	public void updateItem(Item item, int stock, String name, double price, String description,
+	public void updateItem(int itemID, Database database, int stock, String name, double price, String description,
 			ArrayList<Order> itemOrderHistory, String supplier, boolean expitedItem) {
 
 		// cheking access
@@ -118,8 +126,11 @@ public class Support extends User {
 			System.out.println("Warehouse Worker is not logged in.");
 			return;
 		}
-
+		
+		Item item = database.getItem(itemID);
 		item.setAllFields(stock, name, price, description, itemOrderHistory, supplier, expitedItem);
+		database.removeItem(itemID);
+		database.addItem(item);
 	}
 
 	public ShopInfo createShopInfo(String shopName, String address, String managerName, int managerPhone,
@@ -145,26 +156,6 @@ public class Support extends User {
 	}
 
 	@Override
-	public void login(String password) {
-		if (password == this.password) {
-			System.out.println("Support logged in.");
-			this.access = true;
-		} else {
-			System.out.println("Support has not logged in.");
-		}
-	}
-
-	@Override
-	public void logout(String password) {
-		if (password == this.password) {
-			System.out.println("Support logged out.");
-			this.access = false;
-		} else {
-			System.out.println("Support has not logged out.");
-		}
-	}
-
-	@Override
 	public void updateDetails(String username, String password, String mail, int phoneNumber) {
 		// cheking access
 		if (!access) {
@@ -179,7 +170,7 @@ public class Support extends User {
 	}
 
 	@Override
-	public void readItems() {
+	public void readItems(Database database) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Unimplemented method 'readItems'");
 	}

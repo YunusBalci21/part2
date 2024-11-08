@@ -8,7 +8,7 @@ public class WarehouseWorker extends User {
 
 	@Override
 	public void login(String password) {
-		if (password == this.password) {
+		if (password.equals(this.password)) {
 			System.out.println("Warehouse Worker logged in.");
 			this.access = true;
 		} else {
@@ -18,24 +18,24 @@ public class WarehouseWorker extends User {
 	}
 
 	@Override
-	public void logout(String password) {
-		if (password == this.password) {
+	public void logout() {
+		// if (password.equals(this.password)) {
 			System.out.println("Warehouse Worker logged out.");
-			this.access = false;
-		} else {
-			System.out.println("Warehouse Worker has not logged out.");
-		}
+		// 	this.access = false;
+		// } else {
+		// 	System.out.println("Warehouse Worker has not logged out.");
+		// }
 
 	}
 
-	public void updateOrder(Order order, String status) {
+	public void updateOrder(int orderID, String status, Database database) {
 		// cheking access
 		if (!access) {
 			System.out.println("Warehouse Worker is not logged in.");
 			return;
 		}
 
-		order.updateStatus("" + status);
+		database.getOrder(1).updateStatus("" + status);
 		System.out.println("Order Updated");
 	}
 
@@ -54,7 +54,7 @@ public class WarehouseWorker extends User {
 	}
 
 	@Override
-	public void readItems() {
+	public void readItems(Database database) {
 		// checking access
 		if (!access) {
 			System.out.println("Warehouse Worker is not logged in.");
